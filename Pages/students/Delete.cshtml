@@ -1,0 +1,24 @@
+﻿@page
+@using System.Data.SqlClient;
+@{
+    try
+    {
+        String id = Request.Query["id"];
+        String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ADMIN\Documents\studentdetails.mdf;Integrated Security=True;Connect Timeout=30";
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            String sql = "delete from studentInfo where id=@id";
+            using(SqlCommand command=new SqlCommand(sql,connection))
+            {
+                command.Parameters.AddWithValue("@id",id);
+                command.ExecuteNonQuery();
+            }
+        }
+    }
+    catch(Exception ex)
+    {
+        
+    }
+     Response.Redirect("/students/Student");
+}

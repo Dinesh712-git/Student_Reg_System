@@ -1,0 +1,92 @@
+﻿@page
+@model StudentReg.Pages.students.AddstudentsModel
+@{
+}
+<br />
+<h2>New Student</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+    <div class="alert alert-marning alert-dismissible fade show" role="alert">
+        <strong>@Model.errorMessage</strong>
+        <button type="button"class="btn-close"data-bs-dismiss='alert' aria-label="Close"></button>
+    </div>
+}
+
+<form method="POST">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">First Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="fname" value="@Model.stinfo.fname" />
+        </div>
+    </div>
+
+     <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Last Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="lname" value="@Model.stinfo.lname" />
+        </div>
+    </div> 
+
+     <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">DOB</label>
+        <div class="col-sm-6">
+           
+            <input type="datetime-local" id="birthdaytime" name="dob">
+        </div>
+    </div>
+
+     <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Subject</label>
+        <div class="col-sm-6">
+           
+            <select name="subject" id="sub">
+              <option value="ict">ict</option>
+              <option value="maths">maths</option>
+              <option value="engineering">engineering</option>
+              <option value="software">software</option>
+            </select>
+        </div>
+
+        <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">NIC</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="nic" value="@Model.stinfo.nic" />
+        </div>
+
+        <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Mobile</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="mobile" value="@Model.stinfo.mobile" />
+        </div>
+
+
+        <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="email" value="@Model.stinfo.email" />
+        </div>
+
+    </div>
+
+    @if (Model.successMassage.Length > 0)
+    {
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@Model.successMassage</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss=''alert aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">cansel</a>
+        </div>
+    </div>
+</form>
